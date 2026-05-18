@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | {{ name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="page-transition"></div>
+    <div class="custom-cursor"></div>
+
+    <section class="hero" id="hero-section">
+        <nav class="nav-menu">
+            <a href="#about" class="nav-link">Обо мне</a>
+            <a href="#portfolio" class="nav-link">Портфолио</a>
+            <a href="#recommendations" class="nav-link">Рекомендации</a>
+            <a href="#contacts" class="nav-link">Контакты</a>
+        </nav>
+
+        <div class="hero-layer blurred"></div>
+        <div class="hero-layer sharp"></div>
+        <div class="spotlight-frame"></div>
+
+        <div class="roles">
+            <a href="{{ url_for('portfolio_page', category_slug=roles[0].slug) }}" class="role-link transition-link">{{ roles[0].title }}</a>
+            <a href="{{ url_for('portfolio_page', category_slug=roles[1].slug) }}" class="role-link transition-link">{{ roles[1].title }}</a>
+            <a href="{{ url_for('portfolio_page', category_slug=roles[2].slug) }}" class="role-link transition-link">{{ roles[2].title }}</a>
+            <a href="{{ url_for('portfolio_page', category_slug=roles[3].slug) }}" class="role-link transition-link">{{ roles[3].title }}</a>
+        </div>
+
+        <h1 class="main-name">{{ name }}</h1>
+    </section>
+
+    <section class="content-section" id="about">
+        <div class="ambient-glow glow-blue"></div>
+        
+        <h2 class="section-title scroll-reveal">О себе</h2>
+        <div class="scroll-reveal" style="max-width: 800px; text-align: center; line-height: 1.8; font-size: 18px; color: rgba(255,255,255,0.7);">
+            <p>Младший продюсер анимационной студии и студент-режиссер в Санкт-Петербурге.</p>
+            <p>Этот проект реализован в эстетике "minimalist heavy luxury".</p>
+        </div>
+    </section>
+
+    <section class="content-section" id="portfolio">
+        <h2 class="section-title scroll-reveal">Портфолио</h2>
+        
+        <ul class="portfolio-list scroll-reveal">
+            {% for role in roles %}
+            <a href="{{ url_for('portfolio_page', category_slug=role.slug) }}" class="portfolio-item-link transition-link">
+                <li class="portfolio-item">
+                    <span class="portfolio-category">{{ role.title }}</span>
+                    
+                    <div class="portfolio-stack">
+                        <div class="stack-card c3">Photo 3</div>
+                        <div class="stack-card c2">Photo 2</div>
+                        <div class="stack-card c1">Cover</div>
+                    </div>
+
+                    <span class="portfolio-arrow">→</span>
+                </li>
+            </a>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="content-section" id="recommendations">
+        <div class="ambient-glow glow-magenta"></div>
+        
+        <h2 class="section-title scroll-reveal">Рекомендации</h2>
+        
+        <div class="carousel-wrapper scroll-reveal">
+            <a href="#" class="carousel-nav prev">←</a>
+            <a href="#" class="carousel-nav next">→</a>
+            
+            <div class="carousel-container" id="rec-track">
+                <div class="rec-card">
+                    <div class="rec-left">
+                        <div class="rec-logo">LOGO</div>
+                        <div class="rec-company">Компания 1</div>
+                    </div>
+                    <div class="rec-right">
+                        «Здесь будет располагаться текст вашей первой рекомендации. Это место для теплых слов от коллег, режиссеров или клиентов, с которыми вы работали.»
+                    </div>
+                </div>
+
+                <div class="rec-card">
+                    <div class="rec-left">
+                        <div class="rec-logo">LOGO</div>
+                        <div class="rec-company">Агентство 2</div>
+                    </div>
+                    <div class="rec-right">
+                        «Здесь текст второй рекомендации. Карточки плавно перелистываются, создавая удобный и красивый опыт взаимодействия для пользователя.»
+                    </div>
+                </div>
+
+                <div class="rec-card">
+                    <div class="rec-left">
+                        <div class="rec-logo">LOGO</div>
+                        <div class="rec-company">Студия 3</div>
+                    </div>
+                    <div class="rec-right">
+                        «Текст третьей рекомендации. Выдающийся профессионализм и исключительное внимание к деталям в каждом кадре и проекте.»
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="contacts">
+        <h2 class="section-title scroll-reveal">Контакты</h2>
+        
+        <div class="contacts-grid scroll-reveal">
+            <a href="https://instagram.com/maria.osokina" target="_blank" class="contact-link transition-el">
+                <div class="contact-card card-ig">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </div>
+                    <div class="contact-label">Instagram</div>
+                    <div class="contact-value">@maria.osokina</div>
+                </div>
+            </a>
+
+            <a href="https://t.me/maria_os" target="_blank" class="contact-link transition-el">
+                <div class="contact-card card-tg">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="contact-label">Telegram</div>
+                    <div class="contact-value">@maria_os</div>
+                </div>
+            </a>
+
+            <a href="https://vk.com/osokina_ma" target="_blank" class="contact-link transition-el">
+                <div class="contact-card card-vk">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm3.62 14.36h-1.46c-.57 0-.74-.45-1.74-1.48-1.12-1.15-1.61-1.3-1.89-1.3-.39 0-.5.12-.5.7v1.43c0 .38-.12.65-1.33.65-1.95 0-4.08-1.2-5.49-3.23-1.69-2.42-2.18-4.23-2.18-4.63 0-.21.1-.65.67-.65h1.46c.5 0 .68.22.84.66 1 2.68 2.37 4.54 3.01 4.54.24 0 .35-.12.35-.78v-2.12c-.06-.85-.4-.98-.4-1.29 0-.21.14-.42.42-.42h2.5c.34 0 .47.18.47.58v2.66c0 .48.21.58.35.58.24 0 .6-.1 1.4-1.29.83-1.16 1.41-2.92 1.41-2.92.1-.25.32-.42.72-.42h1.46c.6 0 .75.29.62.66-.27.87-1.3 2.35-2.65 3.84-.57.62-.72.8-.23 1.41.36.45 1.57 1.47 1.87 2.23.16.39-.01.76-.71.76z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-label">VKontakte</div>
+                    <div class="contact-value">osokina_ma</div>
+                </div>
+            </a>
+
+            <a href="mailto:m.osokina@yandex.ru" class="contact-link transition-el">
+                <div class="contact-card card-ya">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="contact-label">Yandex</div>
+                    <div class="contact-value">m.osokina@yandex.ru</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        const transitionScreen = document.querySelector('.page-transition');
+
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                transitionScreen.classList.remove('leaving');
+                transitionScreen.classList.add('loaded');
+                if (window.location.hash) {
+                    const targetSection = document.querySelector(window.location.hash);
+                    if (targetSection) {
+                        setTimeout(() => { window.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' }); }, 150);
+                    }
+                }
+            } else {
+                transitionScreen.classList.add('loaded');
+            }
+        });
+
+        // ИСПРАВЛЕНИЕ: ЖЕСТКИЙ СКРОЛЛ ПРИ КЛИКЕ ПО МЕНЮ ДЛЯ ИДЕАЛЬНОЙ ТОЧНОСТИ
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        window.addEventListener('wheel', (e) => { if (e.ctrlKey) e.preventDefault(); }, { passive: false });
+        window.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && (e.key === '=' || e.key === '-' || e.key === '0' || e.key === '+')) e.preventDefault();
+        });
+
+        document.querySelectorAll('.transition-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetUrl = this.href;
+                transitionScreen.classList.remove('loaded');
+                transitionScreen.classList.add('leaving');
+                setTimeout(() => { window.location.href = targetUrl; }, 800);
+            });
+        });
+
+        const recTrack = document.getElementById('rec-track');
+        const btnPrev = document.querySelector('.carousel-nav.prev');
+        const btnNext = document.querySelector('.carousel-nav.next');
+
+        btnPrev.addEventListener('click', (e) => {
+            e.preventDefault();
+            recTrack.scrollBy({ left: -recTrack.clientWidth, behavior: 'smooth' });
+        });
+
+        btnNext.addEventListener('click', (e) => {
+            e.preventDefault();
+            recTrack.scrollBy({ left: recTrack.clientWidth, behavior: 'smooth' });
+        });
+
+        const sharpLayer = document.querySelector('.sharp');
+        const frameLayer = document.querySelector('.spotlight-frame');
+        const cursorBall = document.querySelector('.custom-cursor');
+        
+        const heroSection = document.getElementById('hero-section');
+        const heroInteractiveElements = document.querySelectorAll('.hero .role-link, .hero .nav-link');
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+
+        const finalSquareSize = 350; 
+        const followEase = 0.08; 
+
+        let isIntro = true;
+        let introT = 0; 
+        const introSpeed = 0.0035; 
+
+        let mouseX = window.innerWidth / 2; 
+        let mouseY = window.innerHeight / 2;
+        let targetX = mouseX; 
+        let targetY = mouseY; 
+        let currentX = mouseX; 
+        let currentY = mouseY; 
+
+        const initialDPR = window.devicePixelRatio;
+        function getZoom() { return window.devicePixelRatio / initialDPR; }
+        function updateZoomFactor() { document.documentElement.style.setProperty('--zoom-factor', 1 / getZoom()); }
+        function easeOutQuint(t) { return 1 + (--t) * t * t * t * t; }
+
+        heroSection.addEventListener('mouseenter', () => {
+            document.body.classList.add('hero-hover');
+        });
+        heroSection.addEventListener('mouseleave', () => {
+            document.body.classList.remove('hero-hover');
+        });
+
+        heroInteractiveElements.forEach(link => {
+            link.addEventListener('mouseenter', () => cursorBall.classList.add('cursor-hover'));
+            link.addEventListener('mouseleave', () => cursorBall.classList.remove('cursor-hover'));
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        function animate() {
+            const zoom = getZoom();
+            const w = document.documentElement.clientWidth; 
+            const h = window.innerHeight;
+            const scrollY = window.scrollY;
+
+            const inHero = document.body.classList.contains('hero-hover');
+
+            if (inHero) {
+                targetX = mouseX; 
+                targetY = mouseY; 
+            } else {
+                targetX = w / 2; 
+                targetY = h / 2;
+            }
+
+            if (scrollY >= h * 0.9) { frameLayer.style.opacity = "0"; } 
+            else if (!isIntro) { frameLayer.style.opacity = "1"; }
+
+            if (isIntro) {
+                introT += introSpeed;
+                if (introT >= 1) { introT = 1; isIntro = false; }
+                const t = easeOutQuint(introT);
+                const targetSize = finalSquareSize / zoom;
+                const startSize = Math.max(w, h) * 1.8;
+                const currentSizeVal = startSize + (targetSize - startSize) * t;
+                
+                draw(currentSizeVal, w / 2, h / 2, w, h);
+                currentX += ( (w/2) - currentX) * followEase;
+                currentY += ( (h/2) - currentY) * followEase;
+            } else {
+                currentX += (targetX - currentX) * followEase;
+                currentY += (targetY - currentY) * followEase;
+                draw(finalSquareSize / zoom, currentX, currentY, w, h);
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        function draw(size, x, y, w, h) {
+            const half = size / 2;
+            sharpLayer.style.clipPath = `inset(${y - half}px ${w - (x + half)}px ${h - (y + half)}px ${x - half}px)`;
+            frameLayer.style.width = size + 'px';
+            frameLayer.style.height = size + 'px';
+            frameLayer.style.transform = `translate3d(${x - half}px, ${y - half}px, 0)`;
+            cursorBall.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+        }
+
+        animate();
+        updateZoomFactor();
+        window.addEventListener('resize', updateZoomFactor);
+    </script>
+</body>
+</html>

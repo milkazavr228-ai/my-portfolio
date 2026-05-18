@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category.title }} | {{ name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .detail-page {
+            min-height: 100vh;
+            padding: 100px 40px;
+            background-color: #000;
+        }
+        .back-button {
+            display: inline-block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            margin-bottom: 60px;
+            transition: color 0.3s ease;
+        }
+        .back-button:hover {
+            color: #fff;
+        }
+        .detail-title {
+            font-size: 80px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            margin: 0 0 60px 0;
+            line-height: 1;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            width: 100%;
+        }
+        
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background-color: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), 
+                        box-shadow 0.5s ease, 
+                        border-color 0.5s ease,
+                        color 0.5s ease;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 150%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: translateX(-100%) skewX(-25deg);
+            transition: transform 0.7s ease;
+            pointer-events: none;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            color: #fff;
+            background-color: rgba(255,255,255,0.06);
+        }
+
+        .gallery-item:hover::before {
+            transform: translateX(100%) skewX(-25deg);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="page-transition"></div>
+
+    <section class="detail-page">
+        <a href="{{ url_for('index') }}#portfolio" class="back-button transition-link">← Назад</a>
+        
+        <h1 class="detail-title">{{ category.title }}</h1>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">Проект 1</div>
+            <div class="gallery-item">Проект 2</div>
+            <div class="gallery-item">Проект 3</div>
+            <div class="gallery-item">Проект 4</div>
+        </div>
+    </section>
+
+    <script>
+        const transitionScreen = document.querySelector('.page-transition');
+
+        window.addEventListener('pageshow', (event) => {
+            transitionScreen.classList.remove('leaving');
+            transitionScreen.classList.add('loaded');
+        });
+
+        document.querySelectorAll('.transition-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetUrl = this.href;
+                transitionScreen.classList.remove('loaded');
+                transitionScreen.classList.add('leaving');
+                setTimeout(() => { window.location.href = targetUrl; }, 800);
+            });
+        });
+    </script>
+</body>
+</html>
