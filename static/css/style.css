@@ -117,12 +117,12 @@ body.hero-hover, body.hero-hover a, body.hero-hover .role-link { cursor: none !i
 
 /* === СЕКЦИИ КОНТЕНТА === */
 .content-section {
-    position: relative; z-index: 20; padding: 140px 40px; min-height: 100vh;
+    position: relative; z-index: 20; padding: 100px 40px 60px; min-height: auto;
     background-color: #000; display: flex; flex-direction: column;
-    align-items: center; 
+    align-items: center; justify-content: flex-start;
 }
 
-/* === СВЕТОВЫЕ ПЯТНА (БЛИКИ НА ФОНЕ) === */
+/* СВЕТОВЫЕ ПЯТНА */
 .ambient-glow {
     position: absolute; border-radius: 50%; filter: blur(150px);
     opacity: 0.3; pointer-events: none; z-index: 0;
@@ -153,7 +153,7 @@ body.hero-hover, body.hero-hover a, body.hero-hover .role-link { cursor: none !i
 }
 .scroll-reveal.active { opacity: 1; transform: translateY(0); filter: blur(0); }
 
-.section-title { font-size: 40px; text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 60px; }
+.section-title { font-size: 32px; text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 40px; }
 
 /* === СПИСОК ПОРТФОЛИО === */
 .portfolio-list { width: 100%; max-width: 1000px; list-style: none; padding: 0; margin-top: 20px; position: relative; }
@@ -162,18 +162,16 @@ body.hero-hover, body.hero-hover a, body.hero-hover .role-link { cursor: none !i
     text-decoration: none; color: #fff; display: block; 
     cursor: pointer !important; position: relative; z-index: 1; 
 }
-
 .portfolio-item-link:hover { z-index: 100; }
 
 .portfolio-item {
     position: relative; 
-    border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 0.01px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 25px 20px;
     display: flex; justify-content: space-between; align-items: center;
     transition: padding-left 0.4s ease;
 }
 .portfolio-item-link:last-child .portfolio-item { border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
 
-/* Заливка строки */
 .portfolio-item::before {
     content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 100%;
     background: rgba(255, 255, 255, 0.05); transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1); z-index: 0;
@@ -181,11 +179,10 @@ body.hero-hover, body.hero-hover a, body.hero-hover .role-link { cursor: none !i
 
 .portfolio-category, .portfolio-arrow { position: relative; z-index: 1; }
 
-/* ИСПРАВЛЕНО: Уменьшили текст категорий и стрелок */
 .portfolio-category { font-size: 14px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 500; }
 .portfolio-arrow { font-size: 14px; opacity: 0.5; transition: transform 0.4s ease, opacity 0.4s ease; }
 
-.portfolio-item-link:hover .portfolio-item { padding-left: 40px; }
+.portfolio-item-link:hover .portfolio-item { padding-left: 20px; }
 .portfolio-item-link:hover .portfolio-item::before { width: 100%; }
 .portfolio-item-link:hover .portfolio-arrow { transform: translateX(15px); opacity: 1; }
 
@@ -195,8 +192,8 @@ body.hero-hover, body.hero-hover a, body.hero-hover .role-link { cursor: none !i
     right: 15%; 
     top: 50%;
     transform: translateY(-50%);
-    width: 140px;  
-    height: 190px;
+    width: 120px;  
+    height: 160px;
     z-index: 10;
     opacity: 0;
     pointer-events: none;
@@ -209,29 +206,26 @@ body.hero-hover, body.hero-hover a, body.hero-hover .role-link { cursor: none !i
 
 .stack-card {
     position: absolute !important;
-    top: 0 !important; 
-    left: 0 !important; 
-    width: 100% !important; 
-    height: 100% !important;
-    border-radius: 8px;
+    top: 0 !important; left: 0 !important; 
+    width: 100% !important; height: 100% !important;
+    border-radius: 6px;
     background-color: #111;
     border: 1px solid rgba(255,255,255,0.1);
     display: flex; align-items: center; justify-content: center;
-    font-size: 10px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.15em;
-    box-shadow: -5px 5px 20px rgba(0,0,0,0.5);
+    font-size: 10px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em;
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.stack-card.c3 { background-color: #0a0a0a; z-index: 1; transform: translate(16px, -16px); }
-.stack-card.c2 { background-color: #151515; z-index: 2; transform: translate(8px, -8px); }
+.stack-card.c3 { background-color: #0a0a0a; z-index: 1; transform: translate(12px, -12px); }
+.stack-card.c2 { background-color: #151515; z-index: 2; transform: translate(6px, -6px); }
 .stack-card.c1 { background-color: #222222; z-index: 3; transform: translate(0, 0); }
 
 .portfolio-item-link:hover .stack-card.c3 { transform: translate(24px, -24px) rotate(4deg); }
 .portfolio-item-link:hover .stack-card.c2 { transform: translate(12px, -12px) rotate(2deg); }
-.portfolio-item-link:hover .stack-card.c1 { transform: translate(0, 0) rotate(0deg); box-shadow: -10px 10px 30px rgba(0,0,0,0.8); }
+.portfolio-item-link:hover .stack-card.c1 { transform: translate(0, 0) rotate(0deg); box-shadow: -10px 10px 20px rgba(0,0,0,0.8); }
 
-/* === СЕКЦИЯ РЕКОМЕНДАЦИЙ (СЛАЙДЕР) === */
-.carousel-wrapper { position: relative; width: 100%; max-width: 1000px; margin-top: 40px; }
+/* === СЕКЦИЯ РЕКОМЕНДАЦИЙ === */
+.carousel-wrapper { position: relative; width: 100%; max-width: 1000px; margin-top: 20px; }
 .carousel-container {
     display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
     scrollbar-width: none; -ms-overflow-style: none; gap: 30px; padding-bottom: 20px; scroll-behavior: smooth;
@@ -265,7 +259,7 @@ body.hero-hover, body.hero-hover a, body.hero-hover .role-link { cursor: none !i
 /* === КОНТАКТЫ === */
 .contacts-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px; width: 100%; max-width: 1000px; margin-top: 60px;
+    gap: 30px; width: 100%; max-width: 1000px; margin-top: 20px;
 }
 .contact-link { text-decoration: none; cursor: pointer !important; }
 
@@ -276,17 +270,12 @@ body.hero-hover, body.hero-hover a, body.hero-hover .role-link { cursor: none !i
     transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
     overflow: hidden;
 }
-
-.contact-link:hover .contact-card {
-    transform: translateY(-10px) scale(1.02); background: rgba(255, 255, 255, 0.06);
-}
-
+.contact-link:hover .contact-card { transform: translateY(-10px) scale(1.02); background: rgba(255, 255, 255, 0.06); }
 .contact-icon {
     width: 40px; height: 40px; margin-bottom: 25px; color: #fff; opacity: 0.5;
     transition: opacity 0.5s ease, transform 0.5s ease, color 0.5s ease; display: flex; justify-content: center; align-items: center;
 }
 .contact-icon svg { width: 100%; height: 100%; stroke-width: 1.5; }
-
 .contact-link:hover .contact-icon { opacity: 1; transform: scale(1.1); }
 .contact-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.25em; color: rgba(255, 255, 255, 0.5); margin-bottom: 8px; }
 .contact-value { font-size: 16px; font-weight: 500; color: #fff; letter-spacing: 0.05em; transition: color 0.5s ease;}
@@ -300,13 +289,88 @@ body.hero-hover, body.hero-hover a, body.hero-hover .role-link { cursor: none !i
 .contact-link:hover .card-ya { border-color: #FC3F1D; box-shadow: 0 15px 40px rgba(252, 63, 29, 0.2); }
 .contact-link:hover .card-ya .contact-icon { color: #FC3F1D; }
 
+/* === АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ === */
+@media (max-width: 768px) {
+    .nav-menu {
+        width: 92%;
+        gap: 15px;
+        padding: 10px 15px;
+        top: 15px;
+    }
+    .nav-link {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+    }
+
+    .roles {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        top: 45%;
+        padding: 0 20px;
+    }
+    .role-link {
+        font-size: 11px;
+        letter-spacing: 0.15em;
+    }
+
+    .main-name {
+        font-size: 12vw !important; 
+        padding: 0 10px;
+        bottom: 35px;
+        white-space: normal; 
+        text-align: center;
+        transform: none; 
+    }
+
+    .portfolio-stack {
+        display: none !important;
+    }
+    .portfolio-item {
+        padding: 20px 10px;
+    }
+    .portfolio-category {
+        font-size: 12px;
+    }
+
+    .rec-card {
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 20px;
+    }
+    .rec-left {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-right: 0;
+        padding-bottom: 20px;
+        width: 100%;
+    }
+    .rec-right {
+        font-size: 14px;
+        text-align: center;
+    }
+    .carousel-nav {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+    .roles {
+        top: 50%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0 20px;
+    }
+    .main-name {
+        font-size: 8vw !important;
+        bottom: 10px;
+    }
+    .nav-menu {
+        top: 10px;
+    }
+}
+
 /* === АНИМАЦИИ === */
 @keyframes nameAppear { from { transform: scaleY(1.2) translateY(100%); opacity: 0; } to { transform: scaleY(1.2) translateY(0); opacity: 1; } }
 @keyframes roleFade { from { opacity: 0; filter: blur(10px); transform: translateY(-10px); } to { opacity: 0.8; filter: blur(0); transform: translateY(0); } }
 @keyframes simpleFade { from { opacity: 0; } to { opacity: 1; } }
-
-@media (max-width: 768px) {
-    .rec-card { flex-direction: column; gap: 30px; padding: 40px 20px; }
-    .rec-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-right: 0; padding-bottom: 30px; flex: auto;}
-    .carousel-nav { display: none; }
-}
